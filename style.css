@@ -87,7 +87,7 @@ h1 {
     padding: 20px;
     margin: 18px 0;
     border-radius: 16px;
-    font-size: 1.6em;
+    font-size: 4vw;
     line-height: 1.4;
     border-left: 8px solid #FF6600;
     min-height: 100px;
@@ -116,7 +116,7 @@ h1 {
     flex: 1 1 calc(50% - 20px); /* two per row on medium screens */
     max-width: 80px;
     font-family: "joyig", "Jomolhari", "Noto Serif Tibetan", sans-serif;
-    font-size: 1.5em;
+    font-size: 3.5vw;
     padding: 18px 20px;
     border: none;
     border-radius: 14px;
@@ -224,4 +224,20 @@ h1 {
   background: #ffe6e6 !important;   /* light red */
   border-left: 8px solid #c62828 !important;
   color: #CC0000 !important;
+}
+.music-control {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;   /* stays above everything */
+}
+
+#musicToggle {
+  padding: 8px 14px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 8px;
+  background: #ff7700;
+  color: white;
+  cursor: pointer;
 }

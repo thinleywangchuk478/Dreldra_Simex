@@ -3,7 +3,7 @@ const questions = [
   { noun1:"ཨ་མ་", noun2:"བུ་", ending:"ལེ་ཤ་འདུག", correct:["འི་","གི་"], audio:"q2.mp3" },
   { noun1:"ཁྱིམ་", noun2:"ལྡེ་མིག་", ending:"ག་ཏེ་ཡོད?", correct:["གྱི་"], audio:"q3.mp3" },
   { noun1:"རྒྱལ་པོ་", noun2:"གཟིམ་ཅུང་", ending:"མཇལ་དགོ་མནོ་ཡི།", correct:["འི་", "གི་"], audio:"q.mp3" },
-  { noun1:"ང་", noun2:"མིང་ལ་པདྨ་ཟེར་རུ་ཡང་།།", ending:" ངོ་རིས་པདྨ་འདྲ་བ་མེད་པར་སྐྱོ།།", correct:["ཡི་"], audio:"q3.mp3" },
+  { noun1:"ང་", noun2:"མིང་ལ་པདྨ་ཟེར་རུ་ཡང་།།", ending:" ང་རིས་པདྨ་འདྲ་བ་མེད་པར་སྐྱོ།།", correct:["ཡི་"], audio:"q3.mp3" },
   { noun1:"བཀྲིས་སྒང་", noun2:"དྲག་ཤོས་རྫོང་བདག་", ending:"ཐུགས་གཏུམ་དྲགས་ཡོད་ལོ་སྨ་རེ།", correct:["གི་"], audio:"q3.mp3" },
   { noun1:"རོ་ཁྱི་", noun2:"མཇུག་མ་", ending:"རིངམ་འདུག།", correct:["གི་", "འི་"], audio:"q3.mp3" },
   { noun1:"བླ་མ་", noun2:"ཞལ་རས་འདི་", ending:"དཀར་གསལ་ཟླ་བ་འདྲ་བས།", correct:["གི་", "འི་"], audio:"q3.mp3" },
@@ -134,3 +134,49 @@ window.onload = loadQuestion;
     if (navigator.vibrate) navigator.vibrate([80,50,80]);
   }
 }
+function startMusic() {
+  const bg = document.getElementById("bgMusic");
+  bg.play().catch(err => {
+    console.log("Autoplay blocked, will start after user interaction.");
+  });
+}
+
+// Try to start on load
+window.onload = () => {
+  loadQuestion();
+  startMusic();
+};
+
+// Also ensure it starts after first click
+document.body.addEventListener("click", () => {
+  startMusic();
+}, { once: true });
+window.onload = () => {
+  loadQuestion();   // your quiz setup
+  const bg = document.getElementById("bgMusic");
+  bg.volume = 0.2;  // softer background volume
+  bg.play().catch(err => {
+    console.log("Autoplay may be blocked by browser settings.");
+  });
+};
+window.onload = () => {
+  loadQuestion();   // your quiz setup
+  const bg = document.getElementById("bgMusic");
+  bg.volume = 0.2;  // softer background volume
+  bg.play().catch(err => {
+    console.log("Autoplay may be blocked by browser settings.");
+  });
+};
+
+document.getElementById("musicToggle").addEventListener("click", () => {
+  const bg = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicToggle");
+  if (bg.muted) {
+    bg.muted = false;
+    btn.textContent = "🔊 Mute";
+  } else {
+    bg.muted = true;
+    btn.textContent = "🔈 Unmute";
+  }
+});
+
